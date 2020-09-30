@@ -1,8 +1,13 @@
 import React from "react";
+import SidebarRow from "./SidebarRow";
 
 function Sidebar (){
   return(
-    <div className="sidebar"></div>
+    <div className="sidebar">
+      <SidebarRow title="Pages"/>
+      <SidebarRow title="Friends"/>
+
+    </div>
   )
 }
 

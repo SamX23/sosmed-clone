@@ -1,6 +1,7 @@
 @import "./App.css";
 @import "./Header.css";
 @import "./Sidebar.css";
+@import "./SidebarRow.css";
 
 * {
   margin: 0;
