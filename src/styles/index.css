@@ -1,7 +1,11 @@
 @import "./App.css";
+@import "./Feed.css";
 @import "./Header.css";
 @import "./Sidebar.css";
 @import "./SidebarRow.css";
+@import "./StoryReel.css";
+@import "./Story.css";
+@import "./MessageSender.css";
 
 * {
   margin: 0;
