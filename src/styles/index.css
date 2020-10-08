@@ -6,6 +6,8 @@
 @import "./StoryReel.css";
 @import "./Story.css";
 @import "./MessageSender.css";
+@import "./Post.css";
+@import "./Widgets.css";
 
 * {
   margin: 0;
