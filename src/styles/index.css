@@ -8,6 +8,7 @@
 @import "./MessageSender.css";
 @import "./Post.css";
 @import "./Widgets.css";
+@import "./Login.css";
 
 * {
   margin: 0;
