@@ -1,3 +1,6 @@
+import React from "react";
+import SidebarRow from "./SidebarRow";
+import { useStateValue } from "./StateProvider";
 import {
   Chat,
   EmojiFlags,
@@ -7,15 +10,16 @@ import {
   Storefront,
   VideoLibrary,
 } from "@material-ui/icons";
-import React from "react";
-import SidebarRow from "./SidebarRow";
+
 
 function Sidebar() {
+  const [{ user }, dispatch] = useStateValue()
+
   return (
     <div className="sidebar">
       <SidebarRow
-        src="https://avatars2.githubusercontent.com/u/44131347?s=460&u=44d610e02036335a0886d134081e7099d04ff53a&v=4"
-        title="Sami Kalammallah"
+        src={user.photoURL}
+        title={user.displayName}
       />
       <SidebarRow Icon={LocalHospital} title="COVID-19 Information Center" />
       <SidebarRow Icon={EmojiFlags} title="Pages" />

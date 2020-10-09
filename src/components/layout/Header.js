@@ -13,14 +13,17 @@ import {
 } from "@material-ui/icons";
 
 import { Avatar, IconButton } from "@material-ui/core";
+import { useStateValue } from "./StateProvider";
 
 function Header() {
+  const [{ user }, dispatch] = useStateValue()
+
   return (
     <div className="header">
       <div className="header__left">
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/600px-Facebook_f_logo_%282019%29.svg.png"
-          alt=""
+          alt="facebook logo"
         />
 
         <div className="header__input">
@@ -49,8 +52,8 @@ function Header() {
 
       <div className="header__right">
         <div className="header__info">
-          <Avatar />
-          <h4>Kalammallah</h4>
+          <Avatar src={user.photoURL} />
+          <h4>{user.displayName}</h4>
         </div>
 
         <IconButton>
