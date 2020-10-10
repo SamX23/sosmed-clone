@@ -1,37 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import db from "../firebase";
 import MessageSender from "./MessageSender";
 import Post from "./Post";
 import StoryReel from "./StoryReel";
 
 function Feed() {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    db.collection('posts')
+      .orderBy('timestamp', 'desc')
+      .onSnapshot(snapshot => 
+      setPosts(snapshot.docs.map(doc => ({
+        id: doc.id,
+        data: doc.data()
+      })))
+    )
+  }, [])
+
   return (
     <div className="feed">
       <StoryReel />
       <MessageSender />
-
-      <Post
-        profilePic="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/600px-Facebook_f_logo_%282019%29.svg.png"
-        message="This is works"
-        timestamp="this is a time stamp"
-        username="samikalam"
-        image="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-      />
-      
-      <Post
-        profilePic="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/600px-Facebook_f_logo_%282019%29.svg.png"
-        message="This is works"
-        timestamp="this is a time stamp"
-        username="samikalam"
-        image="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-      />
-
-      <Post
-        profilePic="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/600px-Facebook_f_logo_%282019%29.svg.png"
-        message="This is works"
-        timestamp="this is a time stamp"
-        username="samikalam"
-        image="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"
-      />
+      {posts.map(post => (
+        <Post
+          key={post.id}
+          profilePic={post.data.profilePic}
+          message={post.data.message}
+          timestamp={post.data.timestamp}
+          username={post.data.username}
+          image={post.data.image}
+        />
+      ))}
     </div>
   );
 }

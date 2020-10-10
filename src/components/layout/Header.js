@@ -13,7 +13,7 @@ import {
 } from "@material-ui/icons";
 
 import { Avatar, IconButton } from "@material-ui/core";
-import { useStateValue } from "./StateProvider";
+import { useStateValue } from "../StateProvider";
 
 function Header() {
   const [{ user }, dispatch] = useStateValue()
