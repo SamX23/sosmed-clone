@@ -30,6 +30,8 @@ function Feed() {
           timestamp={post.data.timestamp}
           username={post.data.username}
           image={post.data.image}
+          likes={post.data.like}
+          comment={post.data.comment}
         />
       ))}
     </div>

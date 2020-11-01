@@ -3,6 +3,7 @@ import React from 'react'
 import { auth, provider } from '../firebase'
 import { useStateValue } from '../components/StateProvider'
 import { actionTypes } from '../components/reducer'
+import Footer from '../components/layout/Footer'
 
 function Login() {
     const [state, dispatch] = useStateValue()
@@ -26,6 +27,7 @@ function Login() {
                 <img src="https://www.logo.wine/a/logo/Facebook/Facebook-Logo.wine.svg" alt="facebook"/>
             </div>
             <Button type='submit' onClick={signIn} >Sign In Using Google</Button>
+            <Footer />
         </div>
     )
 }

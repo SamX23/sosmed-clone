@@ -1,8 +1,17 @@
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button } from '@material-ui/core'
 import { AccountCircle, ChatBubbleOutline, ExpandMoreOutlined, NearMe, ThumbUp } from '@material-ui/icons'
 import React from 'react'
 
-function Post({profilePic, image, username, timestamp, message}) {
+function Post({
+    profilePic,
+    image,
+    username,
+    timestamp,
+    message,
+    likes,
+    comment
+})
+{
     return (
         <div className='post'>
             <div className='post__top'>
@@ -24,8 +33,10 @@ function Post({profilePic, image, username, timestamp, message}) {
             
             <div className="post__options">
                 <div className="post__option">
-                    <ThumbUp />
-                    <p>Like</p>
+                    <Button>
+                        <ThumbUp />
+                        <p>Like</p>
+                    </Button>
                 </div>
 
                 <div className="post__option">
