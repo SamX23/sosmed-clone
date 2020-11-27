@@ -6,13 +6,11 @@ import firebase from 'firebase';
 import { useStateValue } from "./StateProvider";
 
 function MessageSender() {
-  const [{ user }, dispatch] = useStateValue()
+  const [{ user }] = useStateValue()
   const [input, setInput] = useState('')
   const [imageUrl, setImageUrl] = useState('')
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     db.collection('posts')
       .add({
         message: input,
@@ -21,7 +19,6 @@ function MessageSender() {
         username: user.displayName,
         image:imageUrl,
     })
-    
     setInput('')
     setImageUrl('')
   };
@@ -40,26 +37,21 @@ function MessageSender() {
           <input
             value={imageUrl}
             onChange={(e)=>setImageUrl(e.target.value)}
-
               placeholder = "image URL (Optional)" />
-
           <button onClick={handleSubmit} type="submit">
             Hidden Submit
           </button>
         </form>
       </div>
-
       <div className="messageSender__bottom">
         <div className="messageSender__option">
           <Videocam style={{ color: "red" }} />
           <h3>Live Video</h3>
         </div>
-
         <div className="messageSender__option">
           <PhotoLibrary style={{ color: "green" }} />
           <h3>Photo/Video</h3>
         </div>
-
         <div className="messageSender__option">
           <InsertEmoticon style={{ color: "orange" }} />
           <h3>Feeling/Activity</h3>

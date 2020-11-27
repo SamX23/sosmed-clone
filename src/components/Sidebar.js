@@ -11,16 +11,12 @@ import {
   VideoLibrary,
 } from "@material-ui/icons";
 
-
 function Sidebar() {
-  const [{ user }, dispatch] = useStateValue()
+  const [{ user }] = useStateValue();
 
   return (
     <div className="sidebar">
-      <SidebarRow
-        src={user.photoURL}
-        title={user.displayName}
-      />
+      <SidebarRow src={user.photoURL} title={user.displayName} />
       <SidebarRow Icon={LocalHospital} title="COVID-19 Information Center" />
       <SidebarRow Icon={EmojiFlags} title="Pages" />
       <SidebarRow Icon={People} title="People" />

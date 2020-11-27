@@ -6,7 +6,6 @@ function SidebarRow({ title, src, Icon }) {
     <div className="sidebarRow">
       {src && <Avatar src={src} />}
       {Icon && <Icon />}
-
       <h4>{title}</h4>
     </div>
   );
