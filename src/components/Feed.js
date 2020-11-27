@@ -5,24 +5,28 @@ import Post from "./Post";
 import StoryReel from "./StoryReel";
 
 function Feed() {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    db.collection('posts')
-      .orderBy('timestamp', 'desc')
-      .onSnapshot(snapshot => 
-      setPosts(snapshot.docs.map(doc => ({
-        id: doc.id,
-        data: doc.data()
-      })))
-    )
-  }, [])
+    const subscribe = db
+      .collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+    return subscribe;
+  }, []);
 
   return (
     <div className="feed">
       <StoryReel />
       <MessageSender />
-      {posts.map(post => (
+      {posts.map((post) => (
         <Post
           key={post.id}
           profilePic={post.data.profilePic}

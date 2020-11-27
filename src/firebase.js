@@ -1,21 +1,22 @@
-import firebase from 'firebase';
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDH_Gdh0c6z4i6_S1tlsBXlsb3TusoCkP0",
-  authDomain: "search-engine-sam.firebaseapp.com",
-  databaseURL: "https://search-engine-sam.firebaseio.com",
-  projectId: "search-engine-sam",
-  storageBucket: "search-engine-sam.appspot.com",
-  messagingSenderId: "1035026594476",
-  appId: "1:1035026594476:web:4c5e734c5743291f127d09",
-  measurementId: "G-4FPHQSF0KD"
+  apiKey: process.env.REACT_APP_FIREBASE_API,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DB_URL,
+  projectId: process.env.REACT_APP_ID,
+  storageBucket: process.env.REACT_APP_STORAGE,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASURE_ID,
 };
 
-const firebaseApp = firebase.initializeApp(firebaseConfig)
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
-const provider = new firebase.auth.GoogleAuthProvider()
+const provider = new firebase.auth.GoogleAuthProvider();
 
-export {auth, provider}
-export default db
+export { auth, provider };
+export default db;
